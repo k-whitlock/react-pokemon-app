@@ -6,19 +6,26 @@ import './App.css';
 
 
 function App() {
+  //pokedata is the array we will get from the _pokemondata()
+  //setPokeData we call this when we update our state in the app
   const [pokeData, setPokeData] = useState([]);
+  //store the url for the next set of pokemon data
   const [nextPoke, setNextPoke] = useState('');
+  //store the url for the previous set of pokemon data
   const [prevPoke, setPrevPoke] = useState('');
+  //handling the loading state when fetching data from api
   const [loading, setLoading] = useState(true);
   const url = `https://pokeapi.co/api/v2/pokemon`;
 
+  //when component mounts to page run this
   useEffect(() => {
     async function fetchPokemon() {
       //fetch all pokemon by using  getAll function in data component.
       let res = await getAll(url);
+      //console.log(res);
       setNextPoke(res.next);
       setPrevPoke(res.previous);
-      let pokemon = await loadPokemon(res.results);
+      await loadPokemon(res.results);
       //set loading to false once results from loadPokemon function are returned
       setLoading(false);
     }
@@ -53,19 +60,19 @@ function App() {
         return pokemonStats
       })
     );
-
     setPokeData(_pokemonData); 
   };
 
-  console.log(pokeData);
+  
 
 //go through each pokemon in pokeData array and render the card component
   return ( 
+    // if data is loading show spinner. if not show buttons and pokemon cards
     <div>   
       {loading ? 
-        <div class="d-flex justify-content-center align-items-center mt-5">
+        <div className="d-flex justify-content-center align-items-center mt-5">
           <h1>Loading...</h1>
-          <div class="spinner-border ml-4" style={{width: "3rem", height: "3rem"}} role="status" aria-hidden="true">
+          <div className="spinner-border ml-4" style={{width: "3rem", height: "3rem"}} role="status" aria-hidden="true">
           </div>
         </div> 
         :(

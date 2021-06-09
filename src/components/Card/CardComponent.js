@@ -9,6 +9,7 @@ function CardComponent({pokemon}) {
                 <img className="pokemon-img"src={pokemon.sprites.front_default} alt="" />
             </div>
             <div className="pokemon-types d-flex justify-content-center">
+                {/* go through each type and make a badge */}
                 {pokemon.types.map(type => {
                     return (
                         <h1 className="pokemon-type badge badge-dark mx-2 p-2">
