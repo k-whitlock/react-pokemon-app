@@ -22,7 +22,7 @@ function App() {
     async function fetchPokemon() {
       //fetch all pokemon by using  getAll function in data component.
       let res = await getAll(url);
-      //console.log(res);
+      
       setNextPoke(res.next);
       setPrevPoke(res.previous);
       await loadPokemon(res.results);
@@ -30,7 +30,7 @@ function App() {
       setLoading(false);
     }
     fetchPokemon();  
-  }, []);
+  }, [url]);
 
   const nextPokemon = async () => {
     setLoading(true);

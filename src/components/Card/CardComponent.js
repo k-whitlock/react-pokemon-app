@@ -10,9 +10,9 @@ function CardComponent({pokemon}) {
             </div>
             <div className="pokemon-types d-flex justify-content-center">
                 {/* go through each type and make a badge */}
-                {pokemon.types.map(type => {
+                {pokemon.types.map((type, i) => {
                     return (
-                        <h1 className="pokemon-type badge badge-dark mx-2 p-2">
+                        <h1 key={i}className="pokemon-type badge badge-dark mx-2 p-2" >
                         {type.type.name}
                         </h1>
                     );
