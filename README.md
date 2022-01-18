@@ -6,6 +6,6 @@
 # Built With 
 - React
 - Bootstrap 4
-- vanilla JS
+- Javascript
 # Authors
 - k-whitlock 
